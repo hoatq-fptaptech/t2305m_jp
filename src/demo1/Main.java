@@ -1,5 +1,7 @@
 package demo1;
 
+import demo2.Bike;
+
 public class Main {
     public static void main(String[] args){
         Car c = new Car();
@@ -11,9 +13,10 @@ public class Main {
 
         System.out.println(c.ownerOfCar.name);
 
-
         c.run();
         c1.run();
+
+        c1.run(5);
 
         c.clearCar();
 
@@ -25,5 +28,10 @@ public class Main {
 
         c.printColor();
         c1.printColor();
+
+        Car c2 = new Car("Blue");
+
+        Bike b = new Bike();
+        b.setBrand("Yamaha");
     }
 }
