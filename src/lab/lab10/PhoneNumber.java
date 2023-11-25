@@ -7,7 +7,10 @@ public class PhoneNumber {
 
     private ArrayList<String> phones;
 
-    public PhoneNumber(String name,String phone) {
+    public PhoneNumber() {
+    }
+
+    public PhoneNumber(String name, String phone) {
         this.name = name;
         this.phones = new ArrayList<>();
         this.phones.add(phone);

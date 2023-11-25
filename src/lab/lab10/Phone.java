@@ -5,7 +5,7 @@ public abstract class Phone {
 
     public abstract void removePhone(String name);
 
-    public abstract void updatePhone(String name, String newphone);
+    public abstract void updatePhone(String name,String oldPhone,String newphone);
 
     public abstract PhoneNumber searchPhone(String name);
 
