@@ -58,7 +58,7 @@ public class Student {
     }
 
     public String toString(){
-        return fullName+"-"+email+"-"+telephone+"-"+address
-                +"-"+dob;
+        return fullName+"\n"+email+"\n"+telephone+"\n"+address
+                +"\n"+dob;
     }
 }

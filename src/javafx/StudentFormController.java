@@ -1,9 +1,9 @@
 package javafx;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
 import java.time.LocalDate;
@@ -16,33 +16,38 @@ public class StudentFormController {
     public TextField ipTel;
     public TextArea ipAddress;
     public DatePicker ipDoB;
-    public Text txtInfo;
+    public ListView<Student> listView;
 
-    private ArrayList<Student> list = new ArrayList<>();
+    private ObservableList<Student> list = FXCollections.observableArrayList();
 
     public void submit(ActionEvent actionEvent) {
-        String fullName = ipFullName.getText();
-        String email = ipEmail.getText();
-        String tel = ipTel.getText();
-        String address = ipAddress.getText();
-        LocalDate dob = ipDoB.getValue();
-        // set view
-        Student s = new Student(fullName,email,tel,address,dob);
-        list.add(s);
-        render();
-        clearInput();
-    }
-
-    private void render(){ // print list student to information
-        String txt = "";
-        for (Student s: list){
-            txt += s.toString();
-            txt+= "\n--------------------\n";
+        try {
+            String fullName = ipFullName.getText();
+            String email = ipEmail.getText();
+            String tel = ipTel.getText();
+            String address = ipAddress.getText();
+            LocalDate dob = ipDoB.getValue();
+            if(fullName.isEmpty()|| fullName.length() < 5){
+                throw new Exception("Vui lòng điền họ và tên");
+            }
+            // set view
+            Student s = new Student(fullName,email,tel,address,dob);
+            list.add(s);
+            render();
+            clearInput();
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(e.getMessage());
+            alert.show();
         }
-        txtInfo.setText(txt);
     }
 
-    private void clearInput(){
+    private void render() throws Exception{ // print list student to information
+        listView.setItems(list);
+        listView.refresh();
+    }
+
+    private void clearInput() throws Exception{
         ipFullName.clear();
         ipEmail.clear();
         ipTel.clear();
