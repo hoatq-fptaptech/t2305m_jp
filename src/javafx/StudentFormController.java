@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class StudentFormController {
 
@@ -14,9 +15,10 @@ public class StudentFormController {
     public TextField ipEmail;
     public TextField ipTel;
     public TextArea ipAddress;
-    public Text txtFullName;
     public DatePicker ipDoB;
-    public Text txtDoB;
+    public Text txtInfo;
+
+    private ArrayList<Student> list = new ArrayList<>();
 
     public void submit(ActionEvent actionEvent) {
         String fullName = ipFullName.getText();
@@ -25,8 +27,26 @@ public class StudentFormController {
         String address = ipAddress.getText();
         LocalDate dob = ipDoB.getValue();
         // set view
-        txtFullName.setText(fullName);
+        Student s = new Student(fullName,email,tel,address,dob);
+        list.add(s);
+        render();
+        clearInput();
+    }
 
-        txtDoB.setText(dob.toString());
+    private void render(){ // print list student to information
+        String txt = "";
+        for (Student s: list){
+            txt += s.toString();
+            txt+= "\n--------------------\n";
+        }
+        txtInfo.setText(txt);
+    }
+
+    private void clearInput(){
+        ipFullName.clear();
+        ipEmail.clear();
+        ipTel.clear();
+        ipAddress.clear();
+        ipDoB.setValue(null);
     }
 }

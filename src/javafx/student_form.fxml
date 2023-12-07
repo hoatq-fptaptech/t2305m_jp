@@ -40,31 +40,18 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Text fx:id="txtFullName" layoutX="363.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name" wrappingWidth="132.21630859375">
+      <Text  layoutX="363.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" wrappingWidth="132.21630859375">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="363.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="132.21630859375">
+      <Text fx:id="txtInfo" layoutX="363.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="132.21630859375">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="363.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone" wrappingWidth="132.21630859375">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="363.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" wrappingWidth="166.21630859375">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
+
       <DatePicker fx:id="ipDoB" layoutX="38.0" layoutY="246.0" prefHeight="33.0" prefWidth="247.0" promptText="Date of Birth" />
-      <Text fx:id="txtDoB" layoutX="363.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="166.21630859375">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
+
    </children>
 </Pane>
