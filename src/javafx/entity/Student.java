@@ -1,4 +1,4 @@
-package javafx;
+package javafx.entity;
 
 import java.time.LocalDate;
 
