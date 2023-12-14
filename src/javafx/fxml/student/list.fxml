@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<ScrollPane fx:controller="javafx.controllers.student.ListController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="595.0" prefWidth="781.0" style="-fx-background-color: #ffffff;">
          <children>
@@ -31,13 +31,13 @@
                </font>
             </Button>
             <Line endX="681.5" layoutX="108.0" layoutY="74.0" startX="-100.0" />
-            <TableView layoutX="14.0" layoutY="87.0" prefHeight="505.0" prefWidth="766.0">
+            <TableView fx:id="tbView" layoutX="14.0" layoutY="87.0" prefHeight="505.0" prefWidth="766.0">
               <columns>
-                <TableColumn prefWidth="160.0" text="Name" />
-                <TableColumn prefWidth="140.0" text="Email" />
-                  <TableColumn prefWidth="125.0" text="Telephone" />
-                  <TableColumn prefWidth="148.0" text="Address" />
-                  <TableColumn prefWidth="100.0" text="DOB" />
+                <TableColumn fx:id="tcName" prefWidth="160.0" text="Name" />
+                <TableColumn fx:id="tcEmail" prefWidth="140.0" text="Email" />
+                  <TableColumn fx:id="tcTel" prefWidth="125.0" text="Telephone" />
+                  <TableColumn fx:id="tcAddress" prefWidth="148.0" text="Address" />
+                  <TableColumn fx:id="tcDob" prefWidth="100.0" text="DOB" />
                   <TableColumn prefWidth="83.0" text="Action" />
               </columns>
             </TableView>
