@@ -2,13 +2,16 @@ package javafx.controllers.student;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.database.Connector;
 import javafx.entity.Student;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -32,19 +35,25 @@ public class ListController  implements Initializable {
 //        ls.add(new Student("Tuan Anh","tuananh@gmail.com","0987654321","100 Lang Ha",
 //                        LocalDate.parse("2004-12-12")));
 
-        //        String sql = "select * from students";
-//        Connector connect = new Connector();
-//        try {
-//            ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
-//            while (rs.next()){
-//                int id = rs.getInt("id");
-//                String name = rs.getString("fullname");
-//                System.out.println(id+"-"+name);
-//            }
-//        }catch (Exception e){
-//
-//        }
-
-        tbView.setItems(ls);
+        String sql = "select * from students";
+        Connector connect = new Connector();
+        try {
+            ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
+            while (rs.next()){
+                int id = rs.getInt("id");
+                String name = rs.getString("fullname");
+                String email = rs.getString("email");
+                String tel = rs.getString("telephone");
+                String address = rs.getString("address");
+                LocalDate dob = LocalDate.parse(rs.getString("dob"));
+                ls.add(new Student(id,name,email,tel,address,dob));
+            }
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(e.getMessage());
+            alert.show();
+        }finally {
+            tbView.setItems(ls);
+        }
     }
 }

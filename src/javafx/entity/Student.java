@@ -3,18 +3,28 @@ package javafx.entity;
 import java.time.LocalDate;
 
 public class Student {
+    private Integer id;
     private String fullName;
     private String email;
     private String telephone;
     private String address;
     private LocalDate dob;
 
-    public Student(String fullName, String email, String telephone, String address, LocalDate dob) {
+    public Student(Integer id, String fullName, String email, String telephone, String address, LocalDate dob) {
+        this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
         this.dob = dob;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFullName() {
