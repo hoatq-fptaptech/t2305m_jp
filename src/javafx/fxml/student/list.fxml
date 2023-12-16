@@ -25,7 +25,7 @@
                </font>
             </TextField>
             <Button layoutX="654.0" layoutY="19.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="60.0" style="-fx-border-radius: 100%;" text="Search" />
-            <Button defaultButton="true" layoutX="729.0" layoutY="18.0" mnemonicParsing="false" opacity="0.77" prefHeight="38.0" prefWidth="38.0" text="+">
+            <Button onAction="#goToCreate" defaultButton="true" layoutX="729.0" layoutY="18.0" mnemonicParsing="false" opacity="0.77" prefHeight="38.0" prefWidth="38.0" text="+">
                <font>
                   <Font size="18.0" />
                </font>

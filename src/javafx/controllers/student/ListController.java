@@ -1,10 +1,15 @@
 package javafx.controllers.student;
 
+import javafx.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.database.Connector;
 import javafx.entity.Student;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -55,5 +60,10 @@ public class ListController  implements Initializable {
         }finally {
             tbView.setItems(ls);
         }
+    }
+
+    public void goToCreate(ActionEvent actionEvent) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/student/create.fxml"));
+        Main.rootStage.setScene(new Scene(root,800,600));
     }
 }
