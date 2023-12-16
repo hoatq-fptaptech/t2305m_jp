@@ -55,9 +55,14 @@ public class CreateController implements Initializable {
             String tel = ipTel.getText();
             String address = ipAddress.getText();
             LocalDate dob = ipDob.getValue();
+            Classes cl = ipClass.getSelectionModel().getSelectedItem();
 
-//            String sql = "insert into students(fullname,email,telephone,address,dob"
+            String sql = "insert into students(fullname,email,telephone,address,dob,class_id)" +
+                    " values('"+fullName+"','"+email+"','"+tel+"','"+address+"','"+dob.toString()+"',"+cl.getId()+")";
 
+            Connector connect = new Connector();
+            connect.getConn().createStatement().execute(sql);
+            backToList(null);
         }catch (Exception e){
             showAlert(e.getMessage());
         }
