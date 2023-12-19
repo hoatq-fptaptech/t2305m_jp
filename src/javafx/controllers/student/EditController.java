@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -70,11 +71,19 @@ public class EditController implements Initializable {
             LocalDate dob = ipDob.getValue();
             Classes cl = ipClass.getSelectionModel().getSelectedItem();
 
-            String sql = "insert into students(fullname,email,telephone,address,dob,class_id)" +
-                    " values('"+fullName+"','"+email+"','"+tel+"','"+address+"','"+dob.toString()+"',"+cl.getId()+")";
+            String sql = "update students set fullname = ?, email = ?,telephone=?,address=?,dob=?,class_id=? where id=?";
 
             Connector connect = new Connector();
-            connect.getConn().createStatement().execute(sql);
+            PreparedStatement pstm = connect.getConn().prepareStatement(sql);
+            pstm.setString(1,fullName);
+            pstm.setString(2,email);
+            pstm.setString(3,tel);
+            pstm.setString(4,address);
+            pstm.setString(5,dob.toString());
+            pstm.setInt(6,cl.getId());
+            pstm.setInt(7,editStudent.getId());
+            pstm.execute();
+
             backToList(null);
         }catch (Exception e){
             showAlert(e.getMessage());
