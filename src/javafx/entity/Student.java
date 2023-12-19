@@ -1,5 +1,10 @@
 package javafx.entity;
 
+import javafx.Main;
+import javafx.controllers.student.EditController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import java.time.LocalDate;
@@ -22,6 +27,17 @@ public class Student {
         this.dob = dob;
 
         this.btnEdit = new Button("Edit");
+        this.btnEdit.setStyle("-fx-background-color: red");
+
+        this.btnEdit.setOnAction(event->{
+            try{
+                EditController.editStudent = this;
+                Parent root = FXMLLoader.load(getClass().getResource("../fxml/student/edit.fxml"));
+                Main.rootStage.setScene(new Scene(root,800,600));
+            }catch (Exception e){
+
+            }
+        });
     }
 
     public Integer getId() {
