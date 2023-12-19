@@ -1,5 +1,7 @@
 package javafx.entity;
 
+import javafx.scene.control.Button;
+
 import java.time.LocalDate;
 
 public class Student {
@@ -9,6 +11,7 @@ public class Student {
     private String telephone;
     private String address;
     private LocalDate dob;
+    private Button btnEdit;
 
     public Student(Integer id, String fullName, String email, String telephone, String address, LocalDate dob) {
         this.id = id;
@@ -17,6 +20,8 @@ public class Student {
         this.telephone = telephone;
         this.address = address;
         this.dob = dob;
+
+        this.btnEdit = new Button("Edit");
     }
 
     public Integer getId() {
@@ -65,6 +70,14 @@ public class Student {
 
     public void setDob(LocalDate dob) {
         this.dob = dob;
+    }
+
+    public Button getBtnEdit() {
+        return btnEdit;
+    }
+
+    public void setBtnEdit(Button btnEdit) {
+        this.btnEdit = btnEdit;
     }
 
     public String toString(){

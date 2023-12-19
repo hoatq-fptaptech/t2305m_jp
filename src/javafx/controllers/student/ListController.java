@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,6 +28,7 @@ public class ListController  implements Initializable {
     public TableColumn<Student,String> tcTel;
     public TableColumn<Student,String> tcAddress;
     public TableColumn<Student, LocalDate> tcDob;
+    public TableColumn<Student, Button> tcEdit;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,6 +37,7 @@ public class ListController  implements Initializable {
         tcTel.setCellValueFactory(new PropertyValueFactory<Student,String>("telephone"));
         tcAddress.setCellValueFactory(new PropertyValueFactory<Student,String>("address"));
         tcDob.setCellValueFactory(new PropertyValueFactory<Student,LocalDate>("dob"));
+        tcEdit.setCellValueFactory(new PropertyValueFactory<Student,Button>("btnEdit"));
 
         ObservableList<Student> ls = FXCollections.observableArrayList();
 //        ls.add(new Student("Tuan Anh","tuananh@gmail.com","0987654321","100 Lang Ha",
