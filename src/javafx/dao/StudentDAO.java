@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class StudentDAO implements DAOInterface{
+public class StudentDAO implements DAOInterface<Student>{
     @Override
     public ArrayList<Student> list() {
         String sql = "select * from students";
