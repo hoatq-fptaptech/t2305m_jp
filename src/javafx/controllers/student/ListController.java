@@ -44,7 +44,7 @@ public class ListController  implements Initializable {
 //                        LocalDate.parse("2004-12-12")));
 
         String sql = "select * from students";
-        Connector connect = new Connector();
+        Connector connect = Connector.getInstance();
         try {
             ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
             while (rs.next()){

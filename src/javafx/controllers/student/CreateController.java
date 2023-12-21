@@ -30,7 +30,7 @@ public class CreateController implements Initializable {
         ObservableList<Classes> ls = FXCollections.observableArrayList();
         String sql = "select * from classes";
         try{
-            Connector connect = new Connector();
+            Connector connect = Connector.getInstance();
             ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
             while (rs.next()){
                 ls.add(new Classes(rs.getInt("id"),rs.getString("name"),rs.getString("room")));
@@ -60,7 +60,7 @@ public class CreateController implements Initializable {
             String sql = "insert into students(fullname,email,telephone,address,dob,class_id)" +
                     " values('"+fullName+"','"+email+"','"+tel+"','"+address+"','"+dob.toString()+"',"+cl.getId()+")";
 
-            Connector connect = new Connector();
+            Connector connect = Connector.getInstance();
             connect.getConn().createStatement().execute(sql);
             backToList(null);
         }catch (Exception e){

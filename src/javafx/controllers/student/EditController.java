@@ -35,7 +35,7 @@ public class EditController implements Initializable {
         String sql = "select * from classes";
         try{
 
-            Connector connect = new Connector();
+            Connector connect = Connector.getInstance();
             ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
             while (rs.next()){
                 ls.add(new Classes(rs.getInt("id"),rs.getString("name"),rs.getString("room")));
@@ -73,7 +73,7 @@ public class EditController implements Initializable {
 
             String sql = "update students set fullname = ?, email = ?,telephone=?,address=?,dob=?,class_id=? where id=?";
 
-            Connector connect = new Connector();
+            Connector connect = Connector.getInstance();
             PreparedStatement pstm = connect.getConn().prepareStatement(sql);
             pstm.setString(1,fullName);
             pstm.setString(2,email);
