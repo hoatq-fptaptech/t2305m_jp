@@ -3,6 +3,7 @@ package javafx.controllers.student;
 import javafx.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.dao.StudentDAO;
 import javafx.database.Connector;
 import javafx.entity.Student;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ListController  implements Initializable {
@@ -40,22 +42,10 @@ public class ListController  implements Initializable {
         tcEdit.setCellValueFactory(new PropertyValueFactory<Student,Button>("btnEdit"));
 
         ObservableList<Student> ls = FXCollections.observableArrayList();
-//        ls.add(new Student("Tuan Anh","tuananh@gmail.com","0987654321","100 Lang Ha",
-//                        LocalDate.parse("2004-12-12")));
-
-        String sql = "select * from students";
-        Connector connect = Connector.getInstance();
         try {
-            ResultSet rs = connect.getConn().createStatement().executeQuery(sql);
-            while (rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("fullname");
-                String email = rs.getString("email");
-                String tel = rs.getString("telephone");
-                String address = rs.getString("address");
-                LocalDate dob = LocalDate.parse(rs.getString("dob"));
-                ls.add(new Student(id,name,email,tel,address,dob));
-            }
+            StudentDAO sd = new StudentDAO();
+//            ArrayList<Student> listSV = sd.list();
+            ls.addAll(sd.list());
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(e.getMessage());
