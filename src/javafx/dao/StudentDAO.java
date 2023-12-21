@@ -3,6 +3,7 @@ package javafx.dao;
 import javafx.database.Connector;
 import javafx.entity.Student;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class StudentDAO implements DAOInterface{
                         rs.getString("email"),
                         rs.getString("telephone"),
                         rs.getString("address"),
-                        LocalDate.parse(rs.getString("dob"))
+                        LocalDate.parse(rs.getString("dob")),
+                        rs.getInt("class_id")
                 ));
             }
         }catch (Exception e){
@@ -32,7 +34,21 @@ public class StudentDAO implements DAOInterface{
 
     @Override
     public boolean create(Student s) {
-        return false;
+        try{
+            String sql = "insert into students(fullname,email,telephone,address,dob,class_id) values(?,?,?,?,?,?)";
+            Connector conn = Connector.getInstance();
+            PreparedStatement pstm = conn.getConn().prepareStatement(sql);
+            pstm.setString(1,s.getFullName());
+            pstm.setString(2,s.getEmail());
+            pstm.setString(3,s.getTelephone());
+            pstm.setString(4,s.getAddress());
+            pstm.setString(5,s.getDob().toString());
+            pstm.setString(5,s.getDob().toString());
+            pstm.execute();
+        }catch (Exception e){
+            return false;
+        }
+        return true;
     }
 
     @Override

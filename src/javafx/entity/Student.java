@@ -16,15 +16,19 @@ public class Student {
     private String telephone;
     private String address;
     private LocalDate dob;
+
+    private Integer class_id;
+
     private Button btnEdit;
 
-    public Student(Integer id, String fullName, String email, String telephone, String address, LocalDate dob) {
+    public Student(Integer id, String fullName, String email, String telephone, String address, LocalDate dob,Integer class_id) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.telephone = telephone;
         this.address = address;
         this.dob = dob;
+        this.class_id = class_id;
 
         this.btnEdit = new Button("Edit");
         this.btnEdit.setStyle("-fx-background-color: red");

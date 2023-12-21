@@ -3,8 +3,10 @@ package javafx.controllers.student;
 import javafx.Main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.dao.StudentDAO;
 import javafx.database.Connector;
 import javafx.entity.Classes;
+import javafx.entity.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -56,12 +58,8 @@ public class CreateController implements Initializable {
             String address = ipAddress.getText();
             LocalDate dob = ipDob.getValue();
             Classes cl = ipClass.getSelectionModel().getSelectedItem();
-
-            String sql = "insert into students(fullname,email,telephone,address,dob,class_id)" +
-                    " values('"+fullName+"','"+email+"','"+tel+"','"+address+"','"+dob.toString()+"',"+cl.getId()+")";
-
-            Connector connect = Connector.getInstance();
-            connect.getConn().createStatement().execute(sql);
+            StudentDAO sd = new StudentDAO();
+            sd.create(new Student(null,fullName,email,tel,address,dob,cl.getId()));
             backToList(null);
         }catch (Exception e){
             showAlert(e.getMessage());
