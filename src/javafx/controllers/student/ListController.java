@@ -6,7 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.dao.StudentDAO;
 import javafx.database.Connector;
 import javafx.entity.Student;
+import javafx.enums.DAOType;
 import javafx.event.ActionEvent;
+import javafx.factory.DAOFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -43,7 +45,7 @@ public class ListController  implements Initializable {
 
         ObservableList<Student> ls = FXCollections.observableArrayList();
         try {
-            StudentDAO sd = new StudentDAO();
+            StudentDAO sd = (StudentDAO) DAOFactory.getDAOInstance(DAOType.STUDENT);
 //            ArrayList<Student> listSV = sd.list();
             ls.addAll(sd.list());
         }catch (Exception e){
